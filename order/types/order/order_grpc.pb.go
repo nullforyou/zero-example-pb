@@ -22,7 +22,14 @@ const _ = grpc.SupportPackageIsVersion7
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type OrderClient interface {
+	// 创建订单
 	CreateOrder(ctx context.Context, in *CreateOrderReq, opts ...grpc.CallOption) (*CreateOrderReply, error)
+	// 关闭订单
+	CloseOrder(ctx context.Context, in *CloseOrderReq, opts ...grpc.CallOption) (*CloseOrderReply, error)
+	// 关闭订单
+	CancelOrder(ctx context.Context, in *CancelOrderReq, opts ...grpc.CallOption) (*CancelOrderReply, error)
+	// 删除订单
+	DeleteOrder(ctx context.Context, in *DeleteOrderReq, opts ...grpc.CallOption) (*DeleteOrderReply, error)
 }
 
 type orderClient struct {
@@ -42,11 +49,45 @@ func (c *orderClient) CreateOrder(ctx context.Context, in *CreateOrderReq, opts 
 	return out, nil
 }
 
+func (c *orderClient) CloseOrder(ctx context.Context, in *CloseOrderReq, opts ...grpc.CallOption) (*CloseOrderReply, error) {
+	out := new(CloseOrderReply)
+	err := c.cc.Invoke(ctx, "/order.order/closeOrder", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *orderClient) CancelOrder(ctx context.Context, in *CancelOrderReq, opts ...grpc.CallOption) (*CancelOrderReply, error) {
+	out := new(CancelOrderReply)
+	err := c.cc.Invoke(ctx, "/order.order/cancelOrder", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *orderClient) DeleteOrder(ctx context.Context, in *DeleteOrderReq, opts ...grpc.CallOption) (*DeleteOrderReply, error) {
+	out := new(DeleteOrderReply)
+	err := c.cc.Invoke(ctx, "/order.order/deleteOrder", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // OrderServer is the server API for Order service.
 // All implementations must embed UnimplementedOrderServer
 // for forward compatibility
 type OrderServer interface {
+	// 创建订单
 	CreateOrder(context.Context, *CreateOrderReq) (*CreateOrderReply, error)
+	// 关闭订单
+	CloseOrder(context.Context, *CloseOrderReq) (*CloseOrderReply, error)
+	// 关闭订单
+	CancelOrder(context.Context, *CancelOrderReq) (*CancelOrderReply, error)
+	// 删除订单
+	DeleteOrder(context.Context, *DeleteOrderReq) (*DeleteOrderReply, error)
 	mustEmbedUnimplementedOrderServer()
 }
 
@@ -56,6 +97,15 @@ type UnimplementedOrderServer struct {
 
 func (UnimplementedOrderServer) CreateOrder(context.Context, *CreateOrderReq) (*CreateOrderReply, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method CreateOrder not implemented")
+}
+func (UnimplementedOrderServer) CloseOrder(context.Context, *CloseOrderReq) (*CloseOrderReply, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CloseOrder not implemented")
+}
+func (UnimplementedOrderServer) CancelOrder(context.Context, *CancelOrderReq) (*CancelOrderReply, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CancelOrder not implemented")
+}
+func (UnimplementedOrderServer) DeleteOrder(context.Context, *DeleteOrderReq) (*DeleteOrderReply, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeleteOrder not implemented")
 }
 func (UnimplementedOrderServer) mustEmbedUnimplementedOrderServer() {}
 
@@ -88,6 +138,60 @@ func _Order_CreateOrder_Handler(srv interface{}, ctx context.Context, dec func(i
 	return interceptor(ctx, in, info, handler)
 }
 
+func _Order_CloseOrder_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(CloseOrderReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(OrderServer).CloseOrder(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/order.order/closeOrder",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(OrderServer).CloseOrder(ctx, req.(*CloseOrderReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Order_CancelOrder_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(CancelOrderReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(OrderServer).CancelOrder(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/order.order/cancelOrder",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(OrderServer).CancelOrder(ctx, req.(*CancelOrderReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Order_DeleteOrder_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(DeleteOrderReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(OrderServer).DeleteOrder(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/order.order/deleteOrder",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(OrderServer).DeleteOrder(ctx, req.(*DeleteOrderReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // Order_ServiceDesc is the grpc.ServiceDesc for Order service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -98,6 +202,18 @@ var Order_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "createOrder",
 			Handler:    _Order_CreateOrder_Handler,
+		},
+		{
+			MethodName: "closeOrder",
+			Handler:    _Order_CloseOrder_Handler,
+		},
+		{
+			MethodName: "cancelOrder",
+			Handler:    _Order_CancelOrder_Handler,
+		},
+		{
+			MethodName: "deleteOrder",
+			Handler:    _Order_DeleteOrder_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

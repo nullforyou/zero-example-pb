@@ -288,6 +288,304 @@ func (x *CreateOrderReply) GetOrderSerialNumber() string {
 	return ""
 }
 
+type CancelOrderReq struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	OrderSerialNumber string `protobuf:"bytes,1,opt,name=OrderSerialNumber,proto3" json:"OrderSerialNumber,omitempty"`
+	CancelOperator    int64  `protobuf:"varint,2,opt,name=CancelOperator,proto3" json:"CancelOperator,omitempty"`
+	CancelCause       string `protobuf:"bytes,3,opt,name=CancelCause,proto3" json:"CancelCause,omitempty"`
+}
+
+func (x *CancelOrderReq) Reset() {
+	*x = CancelOrderReq{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_order_proto_msgTypes[4]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *CancelOrderReq) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CancelOrderReq) ProtoMessage() {}
+
+func (x *CancelOrderReq) ProtoReflect() protoreflect.Message {
+	mi := &file_order_proto_msgTypes[4]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CancelOrderReq.ProtoReflect.Descriptor instead.
+func (*CancelOrderReq) Descriptor() ([]byte, []int) {
+	return file_order_proto_rawDescGZIP(), []int{4}
+}
+
+func (x *CancelOrderReq) GetOrderSerialNumber() string {
+	if x != nil {
+		return x.OrderSerialNumber
+	}
+	return ""
+}
+
+func (x *CancelOrderReq) GetCancelOperator() int64 {
+	if x != nil {
+		return x.CancelOperator
+	}
+	return 0
+}
+
+func (x *CancelOrderReq) GetCancelCause() string {
+	if x != nil {
+		return x.CancelCause
+	}
+	return ""
+}
+
+type CancelOrderReply struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	OrderSerialNumber string `protobuf:"bytes,1,opt,name=OrderSerialNumber,proto3" json:"OrderSerialNumber,omitempty"`
+}
+
+func (x *CancelOrderReply) Reset() {
+	*x = CancelOrderReply{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_order_proto_msgTypes[5]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *CancelOrderReply) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CancelOrderReply) ProtoMessage() {}
+
+func (x *CancelOrderReply) ProtoReflect() protoreflect.Message {
+	mi := &file_order_proto_msgTypes[5]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CancelOrderReply.ProtoReflect.Descriptor instead.
+func (*CancelOrderReply) Descriptor() ([]byte, []int) {
+	return file_order_proto_rawDescGZIP(), []int{5}
+}
+
+func (x *CancelOrderReply) GetOrderSerialNumber() string {
+	if x != nil {
+		return x.OrderSerialNumber
+	}
+	return ""
+}
+
+type CloseOrderReq struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	OrderSerialNumber string `protobuf:"bytes,1,opt,name=OrderSerialNumber,proto3" json:"OrderSerialNumber,omitempty"`
+}
+
+func (x *CloseOrderReq) Reset() {
+	*x = CloseOrderReq{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_order_proto_msgTypes[6]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *CloseOrderReq) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CloseOrderReq) ProtoMessage() {}
+
+func (x *CloseOrderReq) ProtoReflect() protoreflect.Message {
+	mi := &file_order_proto_msgTypes[6]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CloseOrderReq.ProtoReflect.Descriptor instead.
+func (*CloseOrderReq) Descriptor() ([]byte, []int) {
+	return file_order_proto_rawDescGZIP(), []int{6}
+}
+
+func (x *CloseOrderReq) GetOrderSerialNumber() string {
+	if x != nil {
+		return x.OrderSerialNumber
+	}
+	return ""
+}
+
+type CloseOrderReply struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	OrderSerialNumber string `protobuf:"bytes,1,opt,name=OrderSerialNumber,proto3" json:"OrderSerialNumber,omitempty"`
+}
+
+func (x *CloseOrderReply) Reset() {
+	*x = CloseOrderReply{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_order_proto_msgTypes[7]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *CloseOrderReply) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CloseOrderReply) ProtoMessage() {}
+
+func (x *CloseOrderReply) ProtoReflect() protoreflect.Message {
+	mi := &file_order_proto_msgTypes[7]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CloseOrderReply.ProtoReflect.Descriptor instead.
+func (*CloseOrderReply) Descriptor() ([]byte, []int) {
+	return file_order_proto_rawDescGZIP(), []int{7}
+}
+
+func (x *CloseOrderReply) GetOrderSerialNumber() string {
+	if x != nil {
+		return x.OrderSerialNumber
+	}
+	return ""
+}
+
+type DeleteOrderReq struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	OrderSerialNumber string `protobuf:"bytes,1,opt,name=OrderSerialNumber,proto3" json:"OrderSerialNumber,omitempty"`
+}
+
+func (x *DeleteOrderReq) Reset() {
+	*x = DeleteOrderReq{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_order_proto_msgTypes[8]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *DeleteOrderReq) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DeleteOrderReq) ProtoMessage() {}
+
+func (x *DeleteOrderReq) ProtoReflect() protoreflect.Message {
+	mi := &file_order_proto_msgTypes[8]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DeleteOrderReq.ProtoReflect.Descriptor instead.
+func (*DeleteOrderReq) Descriptor() ([]byte, []int) {
+	return file_order_proto_rawDescGZIP(), []int{8}
+}
+
+func (x *DeleteOrderReq) GetOrderSerialNumber() string {
+	if x != nil {
+		return x.OrderSerialNumber
+	}
+	return ""
+}
+
+type DeleteOrderReply struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	OrderSerialNumber string `protobuf:"bytes,1,opt,name=OrderSerialNumber,proto3" json:"OrderSerialNumber,omitempty"`
+}
+
+func (x *DeleteOrderReply) Reset() {
+	*x = DeleteOrderReply{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_order_proto_msgTypes[9]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *DeleteOrderReply) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DeleteOrderReply) ProtoMessage() {}
+
+func (x *DeleteOrderReply) ProtoReflect() protoreflect.Message {
+	mi := &file_order_proto_msgTypes[9]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DeleteOrderReply.ProtoReflect.Descriptor instead.
+func (*DeleteOrderReply) Descriptor() ([]byte, []int) {
+	return file_order_proto_rawDescGZIP(), []int{9}
+}
+
+func (x *DeleteOrderReply) GetOrderSerialNumber() string {
+	if x != nil {
+		return x.OrderSerialNumber
+	}
+	return ""
+}
+
 var File_order_proto protoreflect.FileDescriptor
 
 var file_order_proto_rawDesc = []byte{
@@ -329,12 +627,53 @@ var file_order_proto_rawDesc = []byte{
 	0x70, 0x6c, 0x79, 0x12, 0x2c, 0x0a, 0x11, 0x4f, 0x72, 0x64, 0x65, 0x72, 0x53, 0x65, 0x72, 0x69,
 	0x61, 0x6c, 0x4e, 0x75, 0x6d, 0x62, 0x65, 0x72, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x11,
 	0x4f, 0x72, 0x64, 0x65, 0x72, 0x53, 0x65, 0x72, 0x69, 0x61, 0x6c, 0x4e, 0x75, 0x6d, 0x62, 0x65,
-	0x72, 0x32, 0x46, 0x0a, 0x05, 0x6f, 0x72, 0x64, 0x65, 0x72, 0x12, 0x3d, 0x0a, 0x0b, 0x63, 0x72,
+	0x72, 0x22, 0x88, 0x01, 0x0a, 0x0e, 0x43, 0x61, 0x6e, 0x63, 0x65, 0x6c, 0x4f, 0x72, 0x64, 0x65,
+	0x72, 0x52, 0x65, 0x71, 0x12, 0x2c, 0x0a, 0x11, 0x4f, 0x72, 0x64, 0x65, 0x72, 0x53, 0x65, 0x72,
+	0x69, 0x61, 0x6c, 0x4e, 0x75, 0x6d, 0x62, 0x65, 0x72, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52,
+	0x11, 0x4f, 0x72, 0x64, 0x65, 0x72, 0x53, 0x65, 0x72, 0x69, 0x61, 0x6c, 0x4e, 0x75, 0x6d, 0x62,
+	0x65, 0x72, 0x12, 0x26, 0x0a, 0x0e, 0x43, 0x61, 0x6e, 0x63, 0x65, 0x6c, 0x4f, 0x70, 0x65, 0x72,
+	0x61, 0x74, 0x6f, 0x72, 0x18, 0x02, 0x20, 0x01, 0x28, 0x03, 0x52, 0x0e, 0x43, 0x61, 0x6e, 0x63,
+	0x65, 0x6c, 0x4f, 0x70, 0x65, 0x72, 0x61, 0x74, 0x6f, 0x72, 0x12, 0x20, 0x0a, 0x0b, 0x43, 0x61,
+	0x6e, 0x63, 0x65, 0x6c, 0x43, 0x61, 0x75, 0x73, 0x65, 0x18, 0x03, 0x20, 0x01, 0x28, 0x09, 0x52,
+	0x0b, 0x43, 0x61, 0x6e, 0x63, 0x65, 0x6c, 0x43, 0x61, 0x75, 0x73, 0x65, 0x22, 0x40, 0x0a, 0x10,
+	0x43, 0x61, 0x6e, 0x63, 0x65, 0x6c, 0x4f, 0x72, 0x64, 0x65, 0x72, 0x52, 0x65, 0x70, 0x6c, 0x79,
+	0x12, 0x2c, 0x0a, 0x11, 0x4f, 0x72, 0x64, 0x65, 0x72, 0x53, 0x65, 0x72, 0x69, 0x61, 0x6c, 0x4e,
+	0x75, 0x6d, 0x62, 0x65, 0x72, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x11, 0x4f, 0x72, 0x64,
+	0x65, 0x72, 0x53, 0x65, 0x72, 0x69, 0x61, 0x6c, 0x4e, 0x75, 0x6d, 0x62, 0x65, 0x72, 0x22, 0x3d,
+	0x0a, 0x0d, 0x43, 0x6c, 0x6f, 0x73, 0x65, 0x4f, 0x72, 0x64, 0x65, 0x72, 0x52, 0x65, 0x71, 0x12,
+	0x2c, 0x0a, 0x11, 0x4f, 0x72, 0x64, 0x65, 0x72, 0x53, 0x65, 0x72, 0x69, 0x61, 0x6c, 0x4e, 0x75,
+	0x6d, 0x62, 0x65, 0x72, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x11, 0x4f, 0x72, 0x64, 0x65,
+	0x72, 0x53, 0x65, 0x72, 0x69, 0x61, 0x6c, 0x4e, 0x75, 0x6d, 0x62, 0x65, 0x72, 0x22, 0x3f, 0x0a,
+	0x0f, 0x43, 0x6c, 0x6f, 0x73, 0x65, 0x4f, 0x72, 0x64, 0x65, 0x72, 0x52, 0x65, 0x70, 0x6c, 0x79,
+	0x12, 0x2c, 0x0a, 0x11, 0x4f, 0x72, 0x64, 0x65, 0x72, 0x53, 0x65, 0x72, 0x69, 0x61, 0x6c, 0x4e,
+	0x75, 0x6d, 0x62, 0x65, 0x72, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x11, 0x4f, 0x72, 0x64,
+	0x65, 0x72, 0x53, 0x65, 0x72, 0x69, 0x61, 0x6c, 0x4e, 0x75, 0x6d, 0x62, 0x65, 0x72, 0x22, 0x3e,
+	0x0a, 0x0e, 0x44, 0x65, 0x6c, 0x65, 0x74, 0x65, 0x4f, 0x72, 0x64, 0x65, 0x72, 0x52, 0x65, 0x71,
+	0x12, 0x2c, 0x0a, 0x11, 0x4f, 0x72, 0x64, 0x65, 0x72, 0x53, 0x65, 0x72, 0x69, 0x61, 0x6c, 0x4e,
+	0x75, 0x6d, 0x62, 0x65, 0x72, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x11, 0x4f, 0x72, 0x64,
+	0x65, 0x72, 0x53, 0x65, 0x72, 0x69, 0x61, 0x6c, 0x4e, 0x75, 0x6d, 0x62, 0x65, 0x72, 0x22, 0x40,
+	0x0a, 0x10, 0x44, 0x65, 0x6c, 0x65, 0x74, 0x65, 0x4f, 0x72, 0x64, 0x65, 0x72, 0x52, 0x65, 0x70,
+	0x6c, 0x79, 0x12, 0x2c, 0x0a, 0x11, 0x4f, 0x72, 0x64, 0x65, 0x72, 0x53, 0x65, 0x72, 0x69, 0x61,
+	0x6c, 0x4e, 0x75, 0x6d, 0x62, 0x65, 0x72, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x11, 0x4f,
+	0x72, 0x64, 0x65, 0x72, 0x53, 0x65, 0x72, 0x69, 0x61, 0x6c, 0x4e, 0x75, 0x6d, 0x62, 0x65, 0x72,
+	0x32, 0x80, 0x02, 0x0a, 0x05, 0x6f, 0x72, 0x64, 0x65, 0x72, 0x12, 0x3d, 0x0a, 0x0b, 0x63, 0x72,
 	0x65, 0x61, 0x74, 0x65, 0x4f, 0x72, 0x64, 0x65, 0x72, 0x12, 0x15, 0x2e, 0x6f, 0x72, 0x64, 0x65,
 	0x72, 0x2e, 0x43, 0x72, 0x65, 0x61, 0x74, 0x65, 0x4f, 0x72, 0x64, 0x65, 0x72, 0x52, 0x65, 0x71,
 	0x1a, 0x17, 0x2e, 0x6f, 0x72, 0x64, 0x65, 0x72, 0x2e, 0x43, 0x72, 0x65, 0x61, 0x74, 0x65, 0x4f,
-	0x72, 0x64, 0x65, 0x72, 0x52, 0x65, 0x70, 0x6c, 0x79, 0x42, 0x09, 0x5a, 0x07, 0x2e, 0x2f, 0x6f,
-	0x72, 0x64, 0x65, 0x72, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
+	0x72, 0x64, 0x65, 0x72, 0x52, 0x65, 0x70, 0x6c, 0x79, 0x12, 0x3a, 0x0a, 0x0a, 0x63, 0x6c, 0x6f,
+	0x73, 0x65, 0x4f, 0x72, 0x64, 0x65, 0x72, 0x12, 0x14, 0x2e, 0x6f, 0x72, 0x64, 0x65, 0x72, 0x2e,
+	0x43, 0x6c, 0x6f, 0x73, 0x65, 0x4f, 0x72, 0x64, 0x65, 0x72, 0x52, 0x65, 0x71, 0x1a, 0x16, 0x2e,
+	0x6f, 0x72, 0x64, 0x65, 0x72, 0x2e, 0x43, 0x6c, 0x6f, 0x73, 0x65, 0x4f, 0x72, 0x64, 0x65, 0x72,
+	0x52, 0x65, 0x70, 0x6c, 0x79, 0x12, 0x3d, 0x0a, 0x0b, 0x63, 0x61, 0x6e, 0x63, 0x65, 0x6c, 0x4f,
+	0x72, 0x64, 0x65, 0x72, 0x12, 0x15, 0x2e, 0x6f, 0x72, 0x64, 0x65, 0x72, 0x2e, 0x43, 0x61, 0x6e,
+	0x63, 0x65, 0x6c, 0x4f, 0x72, 0x64, 0x65, 0x72, 0x52, 0x65, 0x71, 0x1a, 0x17, 0x2e, 0x6f, 0x72,
+	0x64, 0x65, 0x72, 0x2e, 0x43, 0x61, 0x6e, 0x63, 0x65, 0x6c, 0x4f, 0x72, 0x64, 0x65, 0x72, 0x52,
+	0x65, 0x70, 0x6c, 0x79, 0x12, 0x3d, 0x0a, 0x0b, 0x64, 0x65, 0x6c, 0x65, 0x74, 0x65, 0x4f, 0x72,
+	0x64, 0x65, 0x72, 0x12, 0x15, 0x2e, 0x6f, 0x72, 0x64, 0x65, 0x72, 0x2e, 0x44, 0x65, 0x6c, 0x65,
+	0x74, 0x65, 0x4f, 0x72, 0x64, 0x65, 0x72, 0x52, 0x65, 0x71, 0x1a, 0x17, 0x2e, 0x6f, 0x72, 0x64,
+	0x65, 0x72, 0x2e, 0x44, 0x65, 0x6c, 0x65, 0x74, 0x65, 0x4f, 0x72, 0x64, 0x65, 0x72, 0x52, 0x65,
+	0x70, 0x6c, 0x79, 0x42, 0x09, 0x5a, 0x07, 0x2e, 0x2f, 0x6f, 0x72, 0x64, 0x65, 0x72, 0x62, 0x06,
+	0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
 }
 
 var (
@@ -349,20 +688,32 @@ func file_order_proto_rawDescGZIP() []byte {
 	return file_order_proto_rawDescData
 }
 
-var file_order_proto_msgTypes = make([]protoimpl.MessageInfo, 4)
+var file_order_proto_msgTypes = make([]protoimpl.MessageInfo, 10)
 var file_order_proto_goTypes = []interface{}{
 	(*CreateOrderReq)(nil),   // 0: order.CreateOrderReq
 	(*CreateOrderInfo)(nil),  // 1: order.CreateOrderInfo
 	(*CreateOrderGoods)(nil), // 2: order.CreateOrderGoods
 	(*CreateOrderReply)(nil), // 3: order.CreateOrderReply
+	(*CancelOrderReq)(nil),   // 4: order.CancelOrderReq
+	(*CancelOrderReply)(nil), // 5: order.CancelOrderReply
+	(*CloseOrderReq)(nil),    // 6: order.CloseOrderReq
+	(*CloseOrderReply)(nil),  // 7: order.CloseOrderReply
+	(*DeleteOrderReq)(nil),   // 8: order.DeleteOrderReq
+	(*DeleteOrderReply)(nil), // 9: order.DeleteOrderReply
 }
 var file_order_proto_depIdxs = []int32{
 	1, // 0: order.CreateOrderReq.OrderInfo:type_name -> order.CreateOrderInfo
 	2, // 1: order.CreateOrderInfo.Goods:type_name -> order.CreateOrderGoods
 	0, // 2: order.order.createOrder:input_type -> order.CreateOrderReq
-	3, // 3: order.order.createOrder:output_type -> order.CreateOrderReply
-	3, // [3:4] is the sub-list for method output_type
-	2, // [2:3] is the sub-list for method input_type
+	6, // 3: order.order.closeOrder:input_type -> order.CloseOrderReq
+	4, // 4: order.order.cancelOrder:input_type -> order.CancelOrderReq
+	8, // 5: order.order.deleteOrder:input_type -> order.DeleteOrderReq
+	3, // 6: order.order.createOrder:output_type -> order.CreateOrderReply
+	7, // 7: order.order.closeOrder:output_type -> order.CloseOrderReply
+	5, // 8: order.order.cancelOrder:output_type -> order.CancelOrderReply
+	9, // 9: order.order.deleteOrder:output_type -> order.DeleteOrderReply
+	6, // [6:10] is the sub-list for method output_type
+	2, // [2:6] is the sub-list for method input_type
 	2, // [2:2] is the sub-list for extension type_name
 	2, // [2:2] is the sub-list for extension extendee
 	0, // [0:2] is the sub-list for field type_name
@@ -422,6 +773,78 @@ func file_order_proto_init() {
 				return nil
 			}
 		}
+		file_order_proto_msgTypes[4].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*CancelOrderReq); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_order_proto_msgTypes[5].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*CancelOrderReply); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_order_proto_msgTypes[6].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*CloseOrderReq); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_order_proto_msgTypes[7].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*CloseOrderReply); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_order_proto_msgTypes[8].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*DeleteOrderReq); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_order_proto_msgTypes[9].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*DeleteOrderReply); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
 	}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
@@ -429,7 +852,7 @@ func file_order_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: file_order_proto_rawDesc,
 			NumEnums:      0,
-			NumMessages:   4,
+			NumMessages:   10,
 			NumExtensions: 0,
 			NumServices:   1,
 		},

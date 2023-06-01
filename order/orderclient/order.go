@@ -13,13 +13,26 @@ import (
 )
 
 type (
+	CancelOrderReply = order.CancelOrderReply
+	CancelOrderReq   = order.CancelOrderReq
+	CloseOrderReply  = order.CloseOrderReply
+	CloseOrderReq    = order.CloseOrderReq
 	CreateOrderGoods = order.CreateOrderGoods
 	CreateOrderInfo  = order.CreateOrderInfo
 	CreateOrderReply = order.CreateOrderReply
 	CreateOrderReq   = order.CreateOrderReq
+	DeleteOrderReply = order.DeleteOrderReply
+	DeleteOrderReq   = order.DeleteOrderReq
 
 	Order interface {
+		// 创建订单
 		CreateOrder(ctx context.Context, in *CreateOrderReq, opts ...grpc.CallOption) (*CreateOrderReply, error)
+		// 关闭订单
+		CloseOrder(ctx context.Context, in *CloseOrderReq, opts ...grpc.CallOption) (*CloseOrderReply, error)
+		// 取消订单
+		CancelOrder(ctx context.Context, in *CancelOrderReq, opts ...grpc.CallOption) (*CancelOrderReply, error)
+		// 删除订单
+		DeleteOrder(ctx context.Context, in *DeleteOrderReq, opts ...grpc.CallOption) (*DeleteOrderReply, error)
 	}
 
 	defaultOrder struct {
@@ -33,7 +46,26 @@ func NewOrder(cli zrpc.Client) Order {
 	}
 }
 
+// 创建订单
 func (m *defaultOrder) CreateOrder(ctx context.Context, in *CreateOrderReq, opts ...grpc.CallOption) (*CreateOrderReply, error) {
 	client := order.NewOrderClient(m.cli.Conn())
 	return client.CreateOrder(ctx, in, opts...)
+}
+
+// 关闭订单
+func (m *defaultOrder) CloseOrder(ctx context.Context, in *CloseOrderReq, opts ...grpc.CallOption) (*CloseOrderReply, error) {
+	client := order.NewOrderClient(m.cli.Conn())
+	return client.CloseOrder(ctx, in, opts...)
+}
+
+// 关闭订单
+func (m *defaultOrder) CancelOrder(ctx context.Context, in *CancelOrderReq, opts ...grpc.CallOption) (*CancelOrderReply, error) {
+	client := order.NewOrderClient(m.cli.Conn())
+	return client.CancelOrder(ctx, in, opts...)
+}
+
+// 删除订单
+func (m *defaultOrder) DeleteOrder(ctx context.Context, in *DeleteOrderReq, opts ...grpc.CallOption) (*DeleteOrderReply, error) {
+	client := order.NewOrderClient(m.cli.Conn())
+	return client.DeleteOrder(ctx, in, opts...)
 }
