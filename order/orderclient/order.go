@@ -13,18 +13,24 @@ import (
 )
 
 type (
-	CancelOrderReply = order.CancelOrderReply
-	CancelOrderReq   = order.CancelOrderReq
-	CloseOrderReply  = order.CloseOrderReply
-	CloseOrderReq    = order.CloseOrderReq
-	CreateOrderGoods = order.CreateOrderGoods
-	CreateOrderInfo  = order.CreateOrderInfo
-	CreateOrderReply = order.CreateOrderReply
-	CreateOrderReq   = order.CreateOrderReq
-	DeleteOrderReply = order.DeleteOrderReply
-	DeleteOrderReq   = order.DeleteOrderReq
+	CancelOrderReply       = order.CancelOrderReply
+	CancelOrderReq         = order.CancelOrderReq
+	CloseOrderReply        = order.CloseOrderReply
+	CloseOrderReq          = order.CloseOrderReq
+	CreateOrderGoods       = order.CreateOrderGoods
+	CreateOrderInfo        = order.CreateOrderInfo
+	CreateOrderReply       = order.CreateOrderReply
+	CreateOrderReq         = order.CreateOrderReq
+	DeleteOrderReply       = order.DeleteOrderReply
+	DeleteOrderReq         = order.DeleteOrderReq
+	GetOrderReply          = order.GetOrderReply
+	GetOrderReq            = order.GetOrderReq
+	PaymentSuccessTccReply = order.PaymentSuccessTccReply
+	PaymentSuccessTccReq   = order.PaymentSuccessTccReq
 
 	Order interface {
+		// 查询订单
+		GetOrder(ctx context.Context, in *GetOrderReq, opts ...grpc.CallOption) (*GetOrderReply, error)
 		// 创建订单
 		CreateOrder(ctx context.Context, in *CreateOrderReq, opts ...grpc.CallOption) (*CreateOrderReply, error)
 		// 关闭订单
@@ -33,6 +39,12 @@ type (
 		CancelOrder(ctx context.Context, in *CancelOrderReq, opts ...grpc.CallOption) (*CancelOrderReply, error)
 		// 删除订单
 		DeleteOrder(ctx context.Context, in *DeleteOrderReq, opts ...grpc.CallOption) (*DeleteOrderReply, error)
+		// 订单支付成功TccTry
+		PaymentSuccessOrderTccTry(ctx context.Context, in *PaymentSuccessTccReq, opts ...grpc.CallOption) (*PaymentSuccessTccReply, error)
+		// 订单支付成功TccConfirm
+		PaymentSuccessOrderTccConfirm(ctx context.Context, in *PaymentSuccessTccReq, opts ...grpc.CallOption) (*PaymentSuccessTccReply, error)
+		// 订单支付成功TccCancel
+		PaymentSuccessOrderTccCancel(ctx context.Context, in *PaymentSuccessTccReq, opts ...grpc.CallOption) (*PaymentSuccessTccReply, error)
 	}
 
 	defaultOrder struct {
@@ -44,6 +56,12 @@ func NewOrder(cli zrpc.Client) Order {
 	return &defaultOrder{
 		cli: cli,
 	}
+}
+
+// 查询订单
+func (m *defaultOrder) GetOrder(ctx context.Context, in *GetOrderReq, opts ...grpc.CallOption) (*GetOrderReply, error) {
+	client := order.NewOrderClient(m.cli.Conn())
+	return client.GetOrder(ctx, in, opts...)
 }
 
 // 创建订单
@@ -58,7 +76,7 @@ func (m *defaultOrder) CloseOrder(ctx context.Context, in *CloseOrderReq, opts .
 	return client.CloseOrder(ctx, in, opts...)
 }
 
-// 关闭订单
+// 取消订单
 func (m *defaultOrder) CancelOrder(ctx context.Context, in *CancelOrderReq, opts ...grpc.CallOption) (*CancelOrderReply, error) {
 	client := order.NewOrderClient(m.cli.Conn())
 	return client.CancelOrder(ctx, in, opts...)
@@ -68,4 +86,22 @@ func (m *defaultOrder) CancelOrder(ctx context.Context, in *CancelOrderReq, opts
 func (m *defaultOrder) DeleteOrder(ctx context.Context, in *DeleteOrderReq, opts ...grpc.CallOption) (*DeleteOrderReply, error) {
 	client := order.NewOrderClient(m.cli.Conn())
 	return client.DeleteOrder(ctx, in, opts...)
+}
+
+// 订单支付成功TccTry
+func (m *defaultOrder) PaymentSuccessOrderTccTry(ctx context.Context, in *PaymentSuccessTccReq, opts ...grpc.CallOption) (*PaymentSuccessTccReply, error) {
+	client := order.NewOrderClient(m.cli.Conn())
+	return client.PaymentSuccessOrderTccTry(ctx, in, opts...)
+}
+
+// 订单支付成功TccConfirm
+func (m *defaultOrder) PaymentSuccessOrderTccConfirm(ctx context.Context, in *PaymentSuccessTccReq, opts ...grpc.CallOption) (*PaymentSuccessTccReply, error) {
+	client := order.NewOrderClient(m.cli.Conn())
+	return client.PaymentSuccessOrderTccConfirm(ctx, in, opts...)
+}
+
+// 订单支付成功TccCancel
+func (m *defaultOrder) PaymentSuccessOrderTccCancel(ctx context.Context, in *PaymentSuccessTccReq, opts ...grpc.CallOption) (*PaymentSuccessTccReply, error) {
+	client := order.NewOrderClient(m.cli.Conn())
+	return client.PaymentSuccessOrderTccCancel(ctx, in, opts...)
 }
